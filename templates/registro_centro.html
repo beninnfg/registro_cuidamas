@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Centro Médico - CUIDA+</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-blue-50 min-h-screen flex items-center justify-center">
+    <div class="bg-white p-10 rounded-xl shadow-md w-full max-w-md">
+        
+        <!-- Logo y título -->
+        <div class="flex items-center justify-center mb-6">
+            <img src="/static/img/logo.jpeg" alt="Logo" class="rounded-full w-10 h-10">
+            <span class="ml-3 text-2xl font-bold text-blue-800">CUIDA<span class="text-red-500">+</span></span>
+        </div>
+
+        <h1 class="text-xl font-semibold text-center text-blue-700 mb-4">Registrar Centro Médico</h1>
+
+        {% if error %}
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <form method="POST">
+            <div class="mb-4">
+                <label class="block text-gray-700">Nombre del Centro Médico</label>
+                <input type="text" name="nombre" class="w-full px-4 py-2 border rounded-md" required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700">Correo Electrónico</label>
+                <input type="email" name="correo" class="w-full px-4 py-2 border rounded-md" required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700">Contraseña</label>
+                <input type="password" name="password" class="w-full px-4 py-2 border rounded-md" required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700">Confirmar Contraseña</label>
+                <input type="password" name="confirmar" class="w-full px-4 py-2 border rounded-md" required>
+            </div>
+            <div class="mb-4">
+                <label class="inline-flex items-center">
+                    <input type="checkbox" name="terminos" class="form-checkbox text-blue-600" required>
+                    <span class="ml-2 text-sm text-gray-600">
+                        Acepto los 
+                        <a href="#" onclick="abrirModal()" class="text-blue-600 underline">términos y condiciones</a>
+                    </span>
+                </label>
+            </div>
+            <button type="submit" class="w-full bg-black hover:bg-gray-800 text-white font-semibold py-2 rounded transition-colors">
+                Registrar
+            </button>
+        </form>
+    </div>
+
+    <!-- Modal de Términos y Condiciones -->
+    <div id="modal-terminos" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+        <div class="bg-white w-11/12 max-w-lg p-6 rounded-lg shadow-lg relative">
+            <h2 class="text-xl font-bold text-blue-800 mb-4">Términos y Condiciones</h2>
+            <p class="text-gray-700 text-sm mb-4">
+                Al registrarse en la plataforma CUIDA+, el centro médico se compromete a proporcionar información médica real, precisa y actualizada.
+                La información será utilizada exclusivamente para la atención en situaciones de emergencia. El acceso a los datos está protegido, 
+                y la plataforma no comparte información con terceros sin consentimiento. Es responsabilidad del centro mantener la confidencialidad de sus credenciales.
+            </p>
+            <div class="text-right">
+                <button onclick="cerrarModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script para manejar el modal -->
+    <script>
+        function abrirModal() {
+            document.getElementById('modal-terminos').classList.remove('hidden');
+        }
+
+        function cerrarModal() {
+            document.getElementById('modal-terminos').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>

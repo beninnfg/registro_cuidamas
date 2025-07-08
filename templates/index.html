@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>CUIDA+ | Pulseras SOS para adultos mayores</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="/">
+            <img src="/static/img/logo.jpeg" alt="Logo" class="rounded-circle" style="width: 40px; height: 40px;">
+            <span class="ms-2 fw-bold text-primary">CUIDA<span style="color:#E95765;">+</span></span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCuida"
+                aria-controls="navbarCuida" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarCuida">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-primary fw-medium" href="#como-funciona">Cómo funciona</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-primary fw-medium" href="{{ url_for('registro_centro') }}">Registro</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary ms-2" href="{{ url_for('login') }}">Iniciar sesión</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero con fondo azul claro y animaciones médicas en código -->
+<header class="position-relative py-5" style="background-color: #e0f4fc; overflow: hidden;">
+    <!-- ECG animado SVG -->
+    <div class="position-absolute top-0 start-0 w-100" style="z-index: 0; opacity: 0.4;">
+        <svg viewBox="0 0 1200 30" preserveAspectRatio="none" width="100%" height="30">
+            <path d="M0,15 L100,15 L110,5 L120,25 L130,5 L140,25 L150,15 L300,15 L310,0 L320,30 L330,0 L340,30 L350,15 L1200,15"
+                  stroke="#0099cc" stroke-width="2" fill="none">
+                <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="3s" repeatCount="indefinite"/>
+                <animate attributeName="stroke-dasharray" values="10,10;30,10;10,10" dur="2s" repeatCount="indefinite"/>
+            </path>
+        </svg>
+    </div>
+
+    <!-- Animaciones médicas flotantes -->
+    <div style="position:absolute; top:20%; left:10%; font-size:2rem; color:#0077b6; animation: pulse 2s infinite;">
+        ❤
+    </div>
+    <div style="position:absolute; top:40%; right:15%; font-size:2rem; color:#00b4d8; animation: float 4s ease-in-out infinite;">
+        +
+    </div>
+
+    <div class="container position-relative" style="z-index: 1;">
+        <div class="row align-items-center">
+            <!-- Texto -->
+            <div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
+                <h1 class="fw-bold text-dark">Confianza que se lleva en la muñeca</h1>
+                <p class="lead mt-3 text-dark">
+                    Pulseras SOS con tecnología <span class="fw-bold text-danger">QR</span> para adultos mayores.<br>
+                    <span class="fw-bold text-danger">Seguridad y tranquilidad</span> en momentos críticos.
+                </p>
+                <div class="mt-4">
+                    <a href="#como-funciona" class="btn btn-primary px-4 me-2">Cómo funciona</a>
+                    <a href="{{ url_for('registro_centro') }}" class="btn btn-danger px-4">Registro</a>
+                </div>
+            </div>
+
+            <!-- Carrusel -->
+            <div class="col-md-6">
+                <div id="carruselCUIDA" class="carousel slide shadow rounded overflow-hidden" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-bs-interval="5000">
+                            <img src="{{ url_for('static', filename='img/666.png') }}" class="d-block w-100" alt="Imagen 1">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="5000">
+                            <img src="{{ url_for('static', filename='img/333.jpg') }}" class="d-block w-100" alt="Imagen 2">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="5000">
+                            <img src="{{ url_for('static', filename='img/222.jpg') }}" class="d-block w-100" alt="Imagen 3">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carruselCUIDA" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carruselCUIDA" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Características -->
+<section class="py-5 bg-white">
+    <div class="container text-center">
+        <h2 class="fw-bold">¿Por qué elegir CUIDA+?</h2>
+        <p class="text-muted mt-2 mb-5">Nuestras pulseras SOS ofrecen seguridad y tranquilidad para adultos mayores y sus familias.</p>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="p-4 rounded bg-light h-100">
+                    <h5 class="fw-semibold" style="color:#003366;">Seguridad inmediata</h5>
+                    <p class="mt-2 text-muted">Acceso instantáneo a información médica vital en caso de emergencia con solo escanear el código QR.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-4 rounded bg-light h-100">
+                    <h5 class="fw-semibold" style="color:#003366;">Fácil de usar</h5>
+                    <p class="mt-2 text-muted">Diseño cómodo y resistente al agua. Sin baterías ni configuraciones complicadas.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-4 rounded bg-light h-100">
+                    <h5 class="fw-semibold" style="color:#003366;">Tranquilidad familiar</h5>
+                    <p class="mt-2 text-muted">Brinda paz mental a familiares sabiendo que la información médica siempre está disponible.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Cómo funciona -->
+<section id="como-funciona" class="py-5" style="background-color: #F3F8FB;">
+    <div class="container">
+        <h2 class="fw-bold text-center mb-5">Cómo funciona</h2>
+        <div class="row text-center">
+            {% set pasos = ['Registro', 'Generación', 'Entrega', 'Uso'] %}
+            {% for paso in pasos %}
+            <div class="col-md-3 mb-4">
+                <div class="bg-white p-4 rounded shadow-sm h-100">
+                    <div class="badge bg-primary rounded-circle mb-3"
+                         style="width:40px; height:40px; line-height:25px; font-size:1.2rem;">
+                        {{ loop.index }}
+                    </div>
+                    <h6 class="text-primary">{{ paso }}</h6>
+                    <p class="text-muted mt-2 small">
+                        {% if paso == 'Registro' %}
+                        El centro médico registra los datos del paciente.
+                        {% elif paso == 'Generación' %}
+                        Se genera un código QR único con su ficha médica.
+                        {% elif paso == 'Entrega' %}
+                        El paciente recibe la pulsera personalizada.
+                        {% elif paso == 'Uso' %}
+                        Cualquiera puede escanear el QR en caso de emergencia.
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Emergencia ejemplo -->
+<section class="bg-white py-5">
+    <div class="container">
+        <div class="row align-items-center g-4">
+            <div class="col-md-6">
+                <h3 class="fw-bold">En caso de emergencia</h3>
+                <ul class="mt-3 text-muted">
+                    <li>✅ Accede a información médica vital.</li>
+                    <li>✅ Visualiza alergias y enfermedades.</li>
+                    <li>✅ Llama a contactos de emergencia.</li>
+                    <li>✅ Identifica el centro médico habitual.</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <div class="border p-4 rounded bg-light">
+                    <h5 class="fw-bold mb-2">María García</h5>
+                    <p class="small text-muted">78 años • A+</p>
+                    <p class="small"><strong>Contactos:</strong> Juan: +51 912 345 678, Ana: +51 923 456 789</p>
+                    <p class="small"><strong>Alergias:</strong> Penicilina, Aspirina</p>
+                    <p class="small"><strong>Condiciones:</strong> Hipertensión, Diabetes tipo 2</p>
+                    <div class="text-center mt-3">
+                        <button class="btn btn-success btn-sm">Llamar a contacto de emergencia</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Clínicas asociadas -->
+<section class="bg-light py-5">
+    <div class="container">
+        <h3 class="fw-bold text-center mb-4" style="color:#003366;">Clínicas asociadas</h3>
+        <div class="row justify-content-center g-4">
+            <div class="col-6 col-md-4 col-lg-2 text-center">
+                <img src="{{ url_for('static', filename='img/san pablo.png') }}" class="img-fluid rounded-circle" alt="Clínica San Pablo">
+                <p class="mt-2 fw-semibold small">Clínica San Pablo</p>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2 text-center">
+                <img src="{{ url_for('static', filename='img/cvida.png') }}" class="img-fluid rounded-circle" alt="Clínica Vida">
+                <p class="mt-2 fw-semibold small">Clínica Vida</p>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2 text-center">
+                <img src="{{ url_for('static', filename='img/ricardo palma.png') }}" class="img-fluid rounded-circle" alt="Clínica Ricardo Palma">
+                <p class="mt-2 fw-semibold small">Clínica Ricardo Palma</p>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2 text-center">
+                <img src="{{ url_for('static', filename='img/casa aulto mayor.png') }}" class="img-fluid rounded" alt="Vivencias Casa de Reposo">
+                <p class="mt-2 fw-semibold small">Vivencias Casa de Reposo</p>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2 text-center">
+                <img src="{{ url_for('static', filename='img/residencia.jpg') }}" class="img-fluid rounded" alt="Residencia Dulce Hogar">
+                <p class="mt-2 fw-semibold small">Residencia Dulce Hogar</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

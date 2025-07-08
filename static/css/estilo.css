@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+    --primary: #0066cc;
+    --primary-dark: #004c99;
+    --secondary: #e63946;
+    --accent: #4cc9f0;
+    --light: #f8fafc;
+    --dark: #1e293b;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #e0f4fc;  /* azul claro */
+    color: var(--dark);
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+}
+
+.btn:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: -100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+}
+
+.btn:hover:after {
+    left: 100%;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+}
+
+.btn-danger {
+    background-color: var(--secondary);
+    color: white;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #c9182b;
+}
+
+.card {
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+                0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.gradient-bg {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text; /* compatibilidad estándar */
+    color: transparent;
+}
+
+.heart {
+    display: inline-block;
+    color: var(--secondary);
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    14% { transform: scale(1.3); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.3); }
+    70% { transform: scale(1); }
+}
+
+/* Fondo dinámico */
+.dynamic-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.ecg-line {
+    position: absolute;
+    height: 2px;
+    background: rgba(0, 102, 204, 0.2);
+    width: 100%;
+    transform-origin: left center;
+    animation: ecg-animation 15s infinite linear;
+}
+
+.ecg-path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: dash 15s linear infinite;
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes ecg-animation {
+    0%, 100% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.hero-section {
+    background: linear-gradient(135deg, #001933, #003366);
+    overflow: hidden;
+    position: relative;
+}
+
+.medical-animation-container {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.medical-symbol {
+    position: absolute;
+    opacity: 0.1;
+    background-repeat: no-repeat;
+    background-size: contain;
+    animation: floatRotate 20s infinite ease-in-out;
+}
+
+.heart {
+    width: 100px;
+    height: 100px;
+    top: 20%;
+    left: 10%;
+    background-image: url("../img/heart.png");
+    animation-delay: 0s;
+}
+
+.cross {
+    width: 80px;
+    height: 80px;
+    top: 60%;
+    left: 80%;
+    background-image: url("../img/cross.png");
+    animation-delay: 4s;
+}
+
+.ecg {
+    width: 200px;
+    height: 50px;
+    top: 40%;
+    left: 50%;
+    background-image: url("../img/ecg-line.png");
+    animation-delay: 2s;
+}
+
+@keyframes floatRotate {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(5deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+}
+
+/* ECG ANIMADA */
+.ecg-path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: dash 3s linear infinite;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.3); opacity: 1; }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
